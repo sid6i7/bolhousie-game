@@ -1,0 +1,91 @@
+.ticketContainer {
+  background-color: var(--color-paper);
+  border: 4px solid #333;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+  font-family: var(--font-body);
+  max-width: 600px;
+  width: 100%;
+}
+
+.ticketHeader {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-primary);
+  color: white;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.row {
+  display: flex;
+  gap: 5px;
+}
+
+.cell {
+  flex: 1;
+  background-color: #fff;
+  border: 2px solid #aaa;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+  user-select: none;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.cell:hover {
+  background-color: #f0f0f0;
+}
+
+.readonly {
+  cursor: default;
+}
+
+.marked {
+  background-color: #ffeba7; /* Yellowish highlight */
+  border-color: #d35400;
+}
+
+.stamp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-family: 'Courier New', monospace;
+  font-size: 3rem;
+  color: rgba(211, 47, 47, 0.7);
+  font-weight: 900;
+  border: 3px solid rgba(211, 47, 47, 0.7);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: stampPop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes stampPop {
+  0% { transform: translate(-50%, -50%) scale(2) rotate(0deg); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(-15deg); opacity: 1; }
+}

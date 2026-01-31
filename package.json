@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "peerserver": "peerjs --port 9000",
+    "dev:all": "npm run peerserver & npm run dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
     "next": "16.1.6",
+    "peerjs": "^1.5.5",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
@@ -16,6 +19,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "peer": "^1.0.2",
     "typescript": "^5"
   }
 }

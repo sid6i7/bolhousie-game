@@ -1,0 +1,106 @@
+.callerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+}
+
+.tvScreen {
+  background-color: #111;
+  color: #eee;
+  border: 10px solid #444;
+  border-radius: 20px;
+  width: 100%;
+  min-height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: var(--font-heading);
+}
+
+.tagline {
+  font-size: 2.5rem;
+  color: var(--color-secondary);
+  text-shadow: 2px 2px 0px #000;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.taglineContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+}
+
+.audioBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #666;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.audioBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--color-secondary);
+  transform: scale(1.1);
+}
+
+.audioBtn.playing {
+  background: rgba(255, 193, 7, 0.2);
+  border-color: var(--color-secondary);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.brandReveal {
+  font-size: 1.5rem;
+  color: #aaa;
+  animation: fadeIn 0.5s;
+}
+
+.brandName {
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.revealBtn {
+  background: transparent;
+  border: 2px dashed #666;
+  color: #666;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.counter {
+  font-family: monospace;
+  font-size: 1.4rem;
+  color: #555;
+  background: #ddd;
+  padding: 5px 10px;
+  border-radius: 4px;
+}

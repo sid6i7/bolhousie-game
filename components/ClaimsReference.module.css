@@ -1,0 +1,111 @@
+.toggleBtn {
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: white;
+  border: 2px solid #000;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #000;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggleBtn:hover {
+  background: #1565c0;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.toggleBtn:active {
+  transform: translateY(-50%) translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+.panel {
+  position: fixed;
+  left: -280px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  max-height: 80vh;
+  background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+  border: 3px solid #000;
+  border-radius: 0 15px 15px 0;
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.panel.open {
+  left: 0;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  text-align: center;
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px dashed rgba(255, 235, 59, 0.3);
+}
+
+.claimsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.claimItem {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px;
+  transition: transform 0.2s ease;
+}
+
+.claimItem:hover {
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.claimHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.claimIcon {
+  font-size: 1.3rem;
+}
+
+.claimName {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: white;
+  text-transform: uppercase;
+}
+
+.claimPattern {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin: 0 0 8px 0;
+}
+
+.claimVisual {
+  font-size: 0.7rem;
+  line-height: 1.2;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 2px;
+}
