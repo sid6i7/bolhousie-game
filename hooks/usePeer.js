@@ -34,26 +34,35 @@ export default function usePeer() {
       try {
         const { Peer } = await import('peerjs');
         
-        // Create peer with configurable server (env vars for production, localhost for dev)
-        const peerHost = process.env.NEXT_PUBLIC_PEER_HOST || 'localhost';
-        const peerPort = parseInt(process.env.NEXT_PUBLIC_PEER_PORT || '9000', 10);
-        const peerSecure = process.env.NEXT_PUBLIC_PEER_SECURE === 'true';
+        // Use PeerJS cloud server for production (free, no deployment needed)
+        // For local dev, set NEXT_PUBLIC_PEER_HOST=localhost
+        const isLocalDev = typeof window !== 'undefined' && window.location.hostname === 'localhost';
+        const peerHost = process.env.NEXT_PUBLIC_PEER_HOST || (isLocalDev ? 'localhost' : '0.peerjs.com');
+        const peerPort = parseInt(process.env.NEXT_PUBLIC_PEER_PORT || (isLocalDev ? '9000' : '443'), 10);
+        const peerSecure = process.env.NEXT_PUBLIC_PEER_SECURE === 'true' || (!isLocalDev && !process.env.NEXT_PUBLIC_PEER_HOST);
+        const peerPath = isLocalDev ? '/' : '/';
         
         console.log(`Peer: Connecting to ${peerSecure ? 'wss' : 'ws'}://${peerHost}:${peerPort}`);
         
-        const newPeer = new Peer({
-          host: peerHost,
-          port: peerPort,
-          path: '/',
-          secure: peerSecure,
-          debug: 2, // Show warnings and errors
+        const peerConfig = {
+          debug: 2,
           config: {
             iceServers: [
               { urls: 'stun:stun.l.google.com:19302' },
               { urls: 'stun:stun1.l.google.com:19302' },
             ]
           }
-        });
+        };
+        
+        // Only add host/port config for self-hosted servers
+        if (isLocalDev || process.env.NEXT_PUBLIC_PEER_HOST) {
+          peerConfig.host = peerHost;
+          peerConfig.port = peerPort;
+          peerConfig.path = peerPath;
+          peerConfig.secure = peerSecure;
+        }
+        
+        const newPeer = new Peer(peerConfig);
 
         peerRef.current = newPeer;
 
